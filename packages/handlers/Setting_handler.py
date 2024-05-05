@@ -25,6 +25,7 @@ class Setting:
             "visualization":False
         }
         
+    @staticmethod
     def get_settings():
         res = []
         for (region, universe) in [("USA", "TOP3000"), ("CHN", "TOP3000"), ("CHN", "TOP2000"), ("USA", "TOP1000"), ("USA", "TOP500"), ("USA", "TOP200")]:
