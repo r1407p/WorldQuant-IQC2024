@@ -35,5 +35,7 @@ class WorldQuantEngine(BaseLogger):
         for i in range(len(all_settings)):
             links.append(self.client_handler.send_alpha(all_settings[i], alpha_code))
             self.logger.info(f'Simulation {i+1} started successfully')            
+        print(links)
         
-        
+    def run(self):
+        self.simulate()
