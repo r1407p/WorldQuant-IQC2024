@@ -3,6 +3,8 @@ from configs.log_config import LogConfig
 from packages.loggers.base_logger import BaseLogger
 from packages.handlers.Setting_handler import Setting
 from packages.handlers.File_handler import FileHandler
+from packages.handlers.Client_handler import ClientHandler
+
 import requests
 
 class WorldQuantEngine(BaseLogger):
@@ -13,6 +15,7 @@ class WorldQuantEngine(BaseLogger):
         self.session = requests.Session()
         self.alpha_name = alpha_name
         self.file_handler = FileHandler(self.logger, "alphas")
+        self.client_handler = ClientHandler(self.logger, self.session)
         self.login()
         
     def login(self):
@@ -28,5 +31,9 @@ class WorldQuantEngine(BaseLogger):
     def simulate(self):
         all_settings = Setting.get_settings()
         alpha_code = self.file_handler.get_alpha(self.alpha_name)
+        links = []
+        for i in range(len(all_settings)):
+            links.append(self.client_handler.send_alpha(all_settings[i], alpha_code))
+            self.logger.info(f'Simulation {i+1} started successfully')            
         
         
