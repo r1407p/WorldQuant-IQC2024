@@ -28,4 +28,4 @@ if __name__ == "__main__":
         log_level = logging.INFO,
         propagate = False
     )
-    engine = WorldQuantEngine(args.email, args.password, log_config)
+    engine = WorldQuantEngine(args.email, args.password, log_config, args.alpha_name)
