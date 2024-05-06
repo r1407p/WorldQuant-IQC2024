@@ -28,13 +28,14 @@ class Setting:
     @staticmethod
     def get_settings():
         res = []
-        for (region, universe) in [("USA", "TOP3000"), ("CHN", "TOP3000"), ("CHN", "TOP2000"), ("USA", "TOP1000"), ("USA", "TOP500"), ("USA", "TOP200")]:
+        # [("USA", "TOP3000"), ("CHN", "TOP3000"), ("CHN", "TOP2000"), ("USA", "TOP1000"), ("USA", "TOP500"), ("USA", "TOP200")]:
+        for (region, universe) in [("USA", "TOP3000"),("USA", "TOP500")]:
             for delay in [1]:
                 for neutralization in get_args(setting.NeutralizationType):
-                    for decay in [0, 1, 3, 5, 7, 10, 14]:
-                        for truncation in [0, 0.05, 0.1, 0.5, 1]:
-                            for pasteurization in ["On"]:
-                                for nan in ["Off"]:
+                    for decay in [3, 7]:
+                        for truncation in [ 0.01, 0.1]:
+                            for pasteurization in ["ON"]:
+                                for nan in ["OFF"]:
                                     res.append(Setting.get_setting(region, universe, delay, neutralization, decay, truncation, pasteurization, nan))
         return res
                                         
