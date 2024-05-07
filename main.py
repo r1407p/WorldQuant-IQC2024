@@ -29,3 +29,4 @@ if __name__ == "__main__":
         propagate = False
     )
     engine = WorldQuantEngine(args.email, args.password, log_config, args.alpha_name)
+    engine.run()
